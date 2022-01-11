@@ -6,7 +6,11 @@ import command from "./command";
 config();
 const TOKEN = process.env.BOT_TOKEN;
 const client = new Discord.Client({
-  intents: ["GUILDS", "GUILD_MESSAGES", "GUILD_BANS"],
+  intents: [
+    Discord.Intents.FLAGS.GUILDS,
+    Discord.Intents.FLAGS.GUILD_MESSAGES,
+    Discord.Intents.FLAGS.GUILD_BANS,
+  ],
 });
 const PREFIX = process.env.BOT_PREFIX;
 
