@@ -30,7 +30,11 @@ const command_1 = __importDefault(require("./command"));
 (0, dotenv_1.config)();
 const TOKEN = process.env.BOT_TOKEN;
 const client = new discord_js_1.default.Client({
-    intents: ["GUILDS", "GUILD_MESSAGES", "GUILD_BANS"],
+    intents: [
+        discord_js_1.default.Intents.FLAGS.GUILDS,
+        discord_js_1.default.Intents.FLAGS.GUILD_MESSAGES,
+        discord_js_1.default.Intents.FLAGS.GUILD_BANS,
+    ],
 });
 const PREFIX = process.env.BOT_PREFIX;
 client.on("ready", () => {

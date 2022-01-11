@@ -53,3 +53,5 @@ export interface CommandOptions {
 export interface Command {
   commandOption: CommandOptions;
 }
+
+export type Collection = Discord.Collection<string, Command>;
