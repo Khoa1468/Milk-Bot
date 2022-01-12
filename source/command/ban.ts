@@ -93,7 +93,7 @@ const banCommand: Command = {
             setTimeout(async () => {
               await message.guild?.members.unban(member.user);
               await member.user.send({ embeds: [DMSuccessUnbanEmbed] });
-            }, ms(args[1]));
+            }, ms(args[1] as string));
           }
         }
       } else {

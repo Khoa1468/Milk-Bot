@@ -36,6 +36,7 @@ const client = new discord_js_1.default.Client({
         discord_js_1.default.Intents.FLAGS.GUILD_BANS,
     ],
 });
+client.setMaxListeners(0);
 const PREFIX = process.env.BOT_PREFIX;
 client.on("ready", () => {
     console.log(`Logged in as ${client.user.tag}!`);

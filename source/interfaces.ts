@@ -45,7 +45,7 @@ export interface CommandOptions {
   callback: (
     message: Discord.Message,
     client: Discord.Client,
-    args: string[],
+    args: any[],
     argsJoined: string
   ) => void;
 }

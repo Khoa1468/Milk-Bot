@@ -12,6 +12,7 @@ const client = new Discord.Client({
     Discord.Intents.FLAGS.GUILD_BANS,
   ],
 });
+client.setMaxListeners(0);
 const PREFIX = process.env.BOT_PREFIX;
 
 client.on("ready", () => {

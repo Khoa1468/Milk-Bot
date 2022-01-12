@@ -122,7 +122,7 @@ const muteCommand: Command = {
               await target?.roles.add(mainRole!);
               await target?.roles.remove(muteRole!);
               await member.send({ embeds: [DMUnmutedTimeOutSuccessEmbed] });
-            }, ms(args[1]));
+            }, ms(args[1] as string));
           }
         }
 
