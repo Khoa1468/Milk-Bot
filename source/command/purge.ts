@@ -20,11 +20,6 @@ const purgeCommand: Command = {
               ),
           ],
         });
-        setTimeout(async () => {
-          if (message.channel.type !== "DM") {
-            await message.channel.bulkDelete(2);
-          }
-        }, 2000);
         return;
       }
       if (!args[0]) {

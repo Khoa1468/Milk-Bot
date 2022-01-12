@@ -32,7 +32,7 @@ const muteCommand = {
                 .setTitle(":white_check_mark: Success!")
                 .setDescription("User have been muted")
                 .addFields([
-                { name: "Reason", value: args[2] || "No Reason Given" },
+                { name: "Reason", value: textReason || "No Reason Given" },
                 { name: "Time", value: args[1] || "No Time Given" },
             ]);
             const DMSuccessEmbed = new discord_js_1.default.MessageEmbed()
