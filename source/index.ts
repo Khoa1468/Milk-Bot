@@ -31,7 +31,6 @@ client.on("ready", () => {
       } else if (file !== baseFile) {
         const option = require(path.join(__dirname, dir, file));
         command(client, option);
-        // console.log(file);
       }
     }
   }

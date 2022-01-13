@@ -53,7 +53,6 @@ client.on("ready", () => {
             else if (file !== baseFile) {
                 const option = require(path_1.default.join(__dirname, dir, file));
                 (0, command_1.default)(client, option);
-                // console.log(file);
             }
         }
     }

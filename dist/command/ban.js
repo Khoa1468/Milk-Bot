@@ -11,8 +11,12 @@ const banCommand = {
         maxArgs: 1,
         async callback(message, client, args, text) {
             const member = message.mentions.members?.first();
+            const cannotFindMember = new discord_js_1.default.MessageEmbed()
+                .setColor("#ff1100")
+                .setTitle(":x: Cannot find member")
+                .setDescription("Please mention a valid member of this server");
             if (!member)
-                return message.reply("Please mention a valid member of this server");
+                return message.reply({ embeds: [cannotFindMember] });
             const reasonText = args.filter((args, index) => index > 1).join(" ");
             const permissionError = new discord_js_1.default.MessageEmbed()
                 .setColor("#ff1100")
