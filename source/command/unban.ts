@@ -7,17 +7,10 @@ const unbanCommand: Command = {
     minArgs: 1,
     maxArgs: 1,
     async callback(message, client, args, text) {
-      const memberTarget = client.users.cache.find(
-        (user) => user.tag === args[0] || user.id === args[0]
-      );
       const permissionErrorEmbed = new Discord.MessageEmbed()
         .setColor("#ff1100")
         .setTitle(":x: Permission Error")
         .setDescription("You don't have the permission to use this command.");
-      const successUnbanEmbed = new Discord.MessageEmbed()
-        .setColor("#00ff80")
-        .setTitle(":white_check_mark: Success!")
-        .setDescription(`${memberTarget} have been unbanned`);
       const DMSuccessUnbanEmbed = new Discord.MessageEmbed()
         .setColor("#77baed")
         .setTitle(`You have been unbanned from ${message.guild!.name}`)
@@ -29,11 +22,25 @@ const unbanCommand: Command = {
       const userNotFoundEmbed = new Discord.MessageEmbed()
         .setColor("#ff1100")
         .setTitle(":x: Failed!")
-        .setDescription("User not found");
+        .setDescription("User to unban not found");
       const cannotUnbanEmbed = new Discord.MessageEmbed()
         .setColor("#ff1100")
         .setTitle(":x: Failed!")
         .setDescription("You cannot unban this user");
+      const cannotFetchBannedUsersEmbed = new Discord.MessageEmbed()
+        .setColor("#ff1100")
+        .setTitle(":x: Failed!")
+        .setDescription("Cannot fetch banned users");
+      const guildBanUsers = await message.guild?.bans.fetch();
+      if (!guildBanUsers)
+        return message.reply({ embeds: [cannotFetchBannedUsersEmbed] });
+      const memberTarget = guildBanUsers?.find(
+        (m) => m.user.tag === args[0] || m.user.id === args[0]
+      )?.user;
+      const successUnbanEmbed = new Discord.MessageEmbed()
+        .setColor("#00ff80")
+        .setTitle(":white_check_mark: Success!")
+        .setDescription(`${memberTarget} have been unbanned`);
       if (!message.member!.permissions.has("BAN_MEMBERS")) {
         await message.reply({
           embeds: [permissionErrorEmbed],
