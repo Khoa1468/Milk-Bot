@@ -4,12 +4,13 @@ import Discord from "discord.js";
 const sendDMChannelCommand: Command = {
   commandOption: {
     commandsAlias: ["sendDMChannel", "sdm"],
-    async callback(message, client, args, text) {
+    async callback({ message, client, args }) {
       const textToSend = args.filter((args, index) => index > 0).join(" ");
       const memberToSend =
+        (await client.users.fetch(args[0])) ||
         client.users.cache.find(
           (user) => user.tag === args[0] || user.id === args[0]
-        ) || message.mentions.users.first();
+        );
       const userNotFoundEmbed = new Discord.MessageEmbed()
         .setColor("#ff1100")
         .setTitle(":x: Error")

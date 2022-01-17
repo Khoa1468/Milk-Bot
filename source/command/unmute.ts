@@ -6,7 +6,7 @@ const unmuteCommand: Command = {
     commandsAlias: ["unmute"],
     minArgs: 1,
     maxArgs: 1,
-    async callback(message, client, args, text) {
+    async callback({ message }) {
       const failedEmbed = new Discord.MessageEmbed()
         .setColor("#ff1100")
         .setTitle(":x: Failed!")

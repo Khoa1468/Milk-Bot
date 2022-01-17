@@ -8,7 +8,7 @@ const kickCommand = {
         commandsAlias: ["kick", "k"],
         minArgs: 1,
         maxArgs: 1,
-        async callback(message, client, args, text) {
+        async callback({ message, args }) {
             const member = message.mentions.members?.first();
             const reasonText = args.filter((args, index) => index > 0).join(" ");
             const userNotFoundEmbed = new discord_js_1.default.MessageEmbed()

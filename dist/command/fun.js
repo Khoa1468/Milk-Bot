@@ -8,7 +8,7 @@ const funCommand = {
         commandsAlias: ["fun", "f"],
         minArgs: 0,
         maxArgs: 0,
-        async callback(message, client, args, text) {
+        async callback({ message }) {
             try {
                 const funEmbed = new discord_js_1.default.MessageEmbed()
                     .setURL("https://www.youtube.com/watch?v=dQw4w9WgXcQ")

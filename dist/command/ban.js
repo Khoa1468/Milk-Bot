@@ -9,7 +9,7 @@ const banCommand = {
         commandsAlias: ["ban", "b"],
         minArgs: 1,
         maxArgs: 1,
-        async callback(message, client, args, text) {
+        async callback({ message, args }) {
             const member = message.mentions.members?.first();
             const cannotFindMember = new discord_js_1.default.MessageEmbed()
                 .setColor("#ff1100")
@@ -17,7 +17,9 @@ const banCommand = {
                 .setDescription("Please mention a valid member of this server");
             if (!member)
                 return message.reply({ embeds: [cannotFindMember] });
-            const reasonText = args.filter((args, index) => index > 1).join(" ");
+            const reasonText = args
+                .filter((args, index) => index > 1)
+                .join(" ");
             const permissionError = new discord_js_1.default.MessageEmbed()
                 .setColor("#ff1100")
                 .setTitle(":x: Permission Error")
@@ -70,7 +72,7 @@ const banCommand = {
                 if (!args[1]) {
                     await member.send({ embeds: [DMSuccessBanned] });
                     await message.reply({ embeds: [successEmbed] });
-                    const memberTarget = await message.guild?.members.ban(member);
+                    message.guild?.members.ban(member);
                 }
                 else {
                     if (args[1].toLowerCase() === "inf" ||

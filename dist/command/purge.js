@@ -9,7 +9,7 @@ const purgeCommand = {
         expectedArgs: "<number of message to purge>",
         minArgs: 1,
         maxArgs: 1,
-        async callback(message, client, args, text) {
+        async callback({ message, args }) {
             let numberToDelete = parseInt(args[0]);
             if (!message.member.permissions.has("MANAGE_MESSAGES")) {
                 await message.reply({

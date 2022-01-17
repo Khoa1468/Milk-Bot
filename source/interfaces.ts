@@ -42,12 +42,7 @@ export interface CommandOptions {
   maxArgs?: number;
   perms?: (keyof typeof validPermissions)[] | keyof typeof validPermissions;
   requiredRoles?: string[] | string;
-  callback: (
-    message: Discord.Message,
-    client: Discord.Client,
-    args: any[],
-    argsJoined: string
-  ) => void;
+  callback: (commandArgs: CommandArguments) => void;
 }
 
 export interface Command {
@@ -55,3 +50,10 @@ export interface Command {
 }
 
 export type Collection = Discord.Collection<string, Command>;
+
+export interface CommandArguments {
+  message: Discord.Message;
+  client: Discord.Client;
+  args: any[];
+  text: string;
+}

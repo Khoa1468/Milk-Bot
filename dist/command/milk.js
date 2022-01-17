@@ -4,7 +4,7 @@ const milkCommand = {
         commandsAlias: ["milk"],
         minArgs: 0,
         maxArgs: 0,
-        async callback(message, client, args, text) {
+        async callback({ message }) {
             try {
                 await message.reply("Milk Milk Milk Milk Milk Milk Milk Milk Milk Milk Milk Milk Milk Milk Milk Milk Milk Milk Milk Milk Milk Milk Milk Milk Milk Milk Milk Milk Milk Milk Milk Milk Milk Milk Milk Milk Milk Milk Milk Milk Milk Milk Milk Milk Milk Milk Milk Milk Milk Milk Milk Milk Milk Milk Milk Milk Milk Milk Milk Milk Milk Milk Milk Milk");
             }

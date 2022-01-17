@@ -8,7 +8,7 @@ const pingCommand = {
         commandsAlias: ["ping"],
         minArgs: 0,
         maxArgs: 0,
-        callback(message, client, args, argsJoined) {
+        callback({ message, client }) {
             const embed = new discord_js_1.default.MessageEmbed()
                 .setColor("#77baed")
                 .setTitle("Pong! :ping_pong:")

@@ -9,7 +9,7 @@ const muteCommand = {
         commandsAlias: ["mute"],
         minArgs: 1,
         maxArgs: 2,
-        async callback(message, client, args, text) {
+        async callback({ message, args }) {
             const textReason = args.filter((args, index) => index > 1).join(" ");
             const userNotFoundEmbed = new discord_js_1.default.MessageEmbed()
                 .setColor("#ff1100")

@@ -47,7 +47,12 @@ function default_1(client, commandOptions) {
                     }
                     const argumentsContent = content.split(/[ ]+/);
                     argumentsContent.shift();
-                    callback(message, client, argumentsContent, argumentsContent.join(" "));
+                    callback({
+                        message,
+                        client,
+                        args: argumentsContent,
+                        text: argumentsContent.join(" "),
+                    });
                     return;
                 }
             }

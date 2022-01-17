@@ -8,7 +8,7 @@ const serverInfoCommand = {
         commandsAlias: ["serverinfo", "si", "guildinfo", "gi"],
         minArgs: 0,
         maxArgs: 0,
-        async callback(message, client, args, text) {
+        async callback({ message }) {
             try {
                 const { guild } = message;
                 const { name, channels, afkChannel, createdAt, ownerId, icon, iconURL, description, roles, rulesChannel, members, memberCount, } = guild;

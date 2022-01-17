@@ -8,7 +8,7 @@ const unbanCommand = {
         commandsAlias: ["unban"],
         minArgs: 1,
         maxArgs: 1,
-        async callback(message, client, args, text) {
+        async callback({ message, args }) {
             const permissionErrorEmbed = new discord_js_1.default.MessageEmbed()
                 .setColor("#ff1100")
                 .setTitle(":x: Permission Error")
@@ -45,7 +45,7 @@ const unbanCommand = {
             }
             try {
                 if (memberTarget) {
-                    const memberUnban = await message.guild.members.unban(memberTarget);
+                    await message.guild.members.unban(memberTarget);
                     await message.reply({ embeds: [successUnbanEmbed] });
                     await memberTarget.send({ embeds: [DMSuccessUnbanEmbed] });
                 }

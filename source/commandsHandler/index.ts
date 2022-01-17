@@ -19,7 +19,12 @@ export = function (
               try {
                 commands
                   .get(command)
-                  ?.commandOption.callback(msg, client, args, args.join(" "));
+                  ?.commandOption.callback({
+                    message: msg,
+                    client,
+                    args,
+                    text: args.join(" "),
+                  });
               } catch (error) {
                 console.log(error);
               }

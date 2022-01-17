@@ -73,12 +73,12 @@ export default function (client: Discord.Client, commandOptions: Command) {
           const argumentsContent = content.split(/[ ]+/);
           argumentsContent.shift();
 
-          callback(
+          callback({
             message,
             client,
-            argumentsContent,
-            argumentsContent.join(" ")
-          );
+            args: argumentsContent,
+            text: argumentsContent.join(" "),
+          });
           return;
         }
       }
