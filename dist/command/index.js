@@ -47,21 +47,7 @@ function default_1(client, commandOptions) {
                     }
                     const argumentsContent = content.split(/[ ]+/);
                     argumentsContent.shift();
-                    // if (
-                    //   argumentsContent.length < minArgs ||
-                    //   (maxArgs !== null && arguments.length > maxArgs)
-                    // ) {
-                    //   message.reply(
-                    //     `Incorrect syntax! Use ${PREFIX}${alias} ${expectedArgs}`
-                    //   );
-                    //   return;
-                    // }
-                    // callback(message, client, argumentsContent, argumentsContent.join(" "));
-                    // console.log(argumentsContent.length);
-                    // console.log(argumentsContent.length < minArgs);
-                    // console.log(argumentsContent.length > maxArgs!);
                     callback(message, client, argumentsContent, argumentsContent.join(" "));
-                    console.log("Command:", commandsAlias[0]);
                     return;
                 }
             }
