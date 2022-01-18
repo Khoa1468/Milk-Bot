@@ -43,6 +43,7 @@ export interface CommandOptions {
   perms?: (keyof typeof validPermissions)[] | keyof typeof validPermissions;
   requiredRoles?: string[] | string;
   callback: (commandArgs: CommandArguments) => void;
+  [key: string]: any;
 }
 
 export interface Command {

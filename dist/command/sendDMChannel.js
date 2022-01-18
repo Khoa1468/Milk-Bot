@@ -8,8 +8,9 @@ const sendDMChannelCommand = {
         commandsAlias: ["sendDMChannel", "sdm"],
         async callback({ message, client, args }) {
             const textToSend = args.filter((args, index) => index > 0).join(" ");
-            const memberToSend = (await client.users.fetch(args[0])) ||
-                client.users.cache.find((user) => user.tag === args[0] || user.id === args[0]);
+            const memberToSend = client.users.cache.find((user) => user.tag === args[0] || user.id === args[0]) ||
+                message.mentions.users.first() ||
+                message.guild?.members.cache.find((member) => member.user.tag === args[0] || member.user.id === args[0]).user;
             const userNotFoundEmbed = new discord_js_1.default.MessageEmbed()
                 .setColor("#ff1100")
                 .setTitle(":x: Error")
