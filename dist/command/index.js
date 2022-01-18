@@ -25,7 +25,9 @@ function default_1(client, commandOptions) {
         validatePermission(perms);
     }
     client.on("messageCreate", (message) => {
-        const { content, guild, member } = message;
+        const { content, guild, member, author } = message;
+        if (member?.user.bot && author.bot)
+            return;
         if (message.channel.type !== "DM") {
             for (const alias of commandsAlias) {
                 if (content.toLowerCase().startsWith(`${PREFIX}${alias.toLowerCase()}`)) {

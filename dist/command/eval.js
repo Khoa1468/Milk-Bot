@@ -13,7 +13,7 @@ const evalCommand = {
             const successEmbed = new discord_js_1.default.MessageEmbed()
                 .setColor("#00ff00")
                 .setTitle("Success")
-                .addFields({ name: "Input", value: `\`\`\`ts\n${text}\`\`\`` }, { name: "Output", value: `\`\`\`ts\n${result}\`\`\`` }, { name: "Type", value: `\`\`\`ts\n${typeof result}\`\`\`` });
+                .addFields({ name: "Input", value: `\`\`\`js\n${text}\`\`\`` }, { name: "Output", value: `\`\`\`js\n${result}\`\`\`` }, { name: "Type", value: `\`\`\`js\n${typeof result}\`\`\`` });
             if (message.author.id === ownerID && message.channelId === channelID) {
                 await message.channel.send({ embeds: [successEmbed] });
             }
