@@ -22,7 +22,7 @@ const smCommand: Command = {
         );
 
       if (!args[0]) {
-        await message.reply("Usage: m!ms <time/duration>");
+        await message.reply("Usage: m!sm <time/duration>");
         return;
       }
 

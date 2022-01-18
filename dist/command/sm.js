@@ -20,7 +20,7 @@ const smCommand = {
                 .setTitle(":x: Failed!")
                 .setDescription("This command is only available in a server text channel");
             if (!args[0]) {
-                await message.reply("Usage: m!ms <time/duration>");
+                await message.reply("Usage: m!sm <time/duration>");
                 return;
             }
             let duration = args[0].toLowerCase();
