@@ -9,13 +9,39 @@ const evalCommand = {
     commandOption: {
         commandsAlias: ["eval", "e"],
         async callback({ message, client, args, text }) {
-            const result = eval(text);
-            const successEmbed = new discord_js_1.default.MessageEmbed()
-                .setColor("#00ff00")
-                .setTitle("Success")
-                .addFields({ name: "Input", value: `\`\`\`js\n${text}\`\`\`` }, { name: "Output", value: `\`\`\`js\n${result}\`\`\`` }, { name: "Type", value: `\`\`\`js\n${typeof result}\`\`\`` });
-            if (message.author.id === ownerID && message.channelId === channelID) {
-                await message.channel.send({ embeds: [successEmbed] });
+            try {
+                if (message.author.id === ownerID && message.channelId === channelID) {
+                    try {
+                        const result = eval(text);
+                        const successEmbed = new discord_js_1.default.MessageEmbed()
+                            .setColor("#00ff00")
+                            .setTitle("Success")
+                            .addFields({ name: "Input", value: `\`\`\`js\n${text}\`\`\`` }, { name: "Output", value: `\`\`\`js\n${result}\`\`\`` }, { name: "Type", value: `\`\`\`js\n${typeof result}\`\`\`` });
+                        await message.channel.send({ embeds: [successEmbed] });
+                    }
+                    catch (error) {
+                        const errorEmbed = new discord_js_1.default.MessageEmbed()
+                            .setColor("#ff0000")
+                            .setTitle("Error")
+                            .setDescription("Some Error Was Occured When Execute The Command")
+                            .addFields([
+                            { name: "Input", value: `\`\`\`js\n${text}\`\`\`` },
+                            { name: "Output", value: `\`\`\`js\n${error}\`\`\`` },
+                        ]);
+                        await message.channel.send({ embeds: [errorEmbed] });
+                    }
+                }
+            }
+            catch (error) {
+                const errorEmbed = new discord_js_1.default.MessageEmbed()
+                    .setColor("#ff0000")
+                    .setTitle("Error")
+                    .setDescription("Some Error Was Occured When Execute The Command")
+                    .addFields([
+                    { name: "Input", value: `\`\`\`js\n${text}\`\`\`` },
+                    { name: "Output", value: `\`\`\`js\n${error}\`\`\`` },
+                ]);
+                await message.channel.send({ embeds: [errorEmbed] });
             }
         },
     },

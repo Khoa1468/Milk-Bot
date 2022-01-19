@@ -34,6 +34,7 @@ const client = new discord_js_1.default.Client({
         discord_js_1.default.Intents.FLAGS.GUILDS,
         discord_js_1.default.Intents.FLAGS.GUILD_MESSAGES,
         discord_js_1.default.Intents.FLAGS.GUILD_BANS,
+        discord_js_1.default.Intents.FLAGS.GUILD_MEMBERS,
     ],
 });
 client.setMaxListeners(0);
