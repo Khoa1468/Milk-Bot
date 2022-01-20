@@ -7,6 +7,7 @@
     "esModuleInterop": true,
     "experimentalDecorators": true,
     "outDir": "dist",
-    "rootDir": "source"
+    "rootDir": "source",
+    "skipLibCheck": true
   }
 }
